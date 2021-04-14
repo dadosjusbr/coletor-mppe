@@ -6,20 +6,22 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import re
 
-#Year code - complements - year
+#Url base refente ao  direntório que contém as planilhas: year_code - url_complement - key
 folder_url = 'https://transparencia.mppe.mp.br/index.php/contracheque/category/{}-{}-{}'
 
+#Complementos para folder_url
 url_complements = {
     'remu':'remuneracao-de-todos-os-membros-ativos', 
 	'vi':  'verbas-indenizatorias-e-outras-remuneracoes-temporarias'
 }
 
-#Folder-  code - downloadCode - mes - ano
+#Formato de envio da requisição: folder_url - download_code - month - year  
 url_formats = {
 	'remu': "{}?download={}:membros-ativos-{}-{}",
 	'vi': "{}?download={}:virt-{}-{}"
 } 
 
+# Todos os anos possuem um código associado para remunerações simples variando ano-a-ano
 remu_year_codes = {
 	2018: 405,
 	2019: 445,
@@ -27,6 +29,7 @@ remu_year_codes = {
 	2021: 548
 }
 
+# Todos os anos possuem um código associado para verbas indenizatórias variando ano-a-ano
 vi_year_codes = {
 	2018: 415,
 	2019: 451,
@@ -50,30 +53,42 @@ months = {
 	12:'dezembro'
 }
 
-def init_download_codes(year, month):
+#Retorna um dicionário com códigos que compõe as urls relativa ao mês em questão para remunerações simples e vi.
+def download_codes(year, month):
 	download_codes = {}
     
 	for key in url_complements:
+
 		if key == 'remu':
 			url = folder_url.format(remu_year_codes[int(year)], url_complements[key], year)
 		else: 
 			url = folder_url.format(vi_year_codes[int(year)], url_complements[key], year)
-   
+
 		source_page = urlopen(url).read().decode('utf-8')
 		soup = BeautifulSoup(source_page, features= 'lxml')
 
 		#Intera sob as tags de download que contém o download code
 		for link in soup.findAll('a', {'class': 'btn btn-success'}):
-			if month in link['href']:
-				download_codes[key] = re.search('download=(.*):membros', link['href']).group(1)
-				break
-			elif months[int(month)] in link['href']:
-				download_codes[key] = re.search('download=(.*):virt', link['href']).group(1)
-				break
-
+			#Remunerações contém no link o numero do mês
+			if key == 'remu' :
+				if month in link['href']:
+					download_codes[key] = re.search('download=(.*):membros', link['href']).group(1)
+					break
+			else:
+			#Verbas indenizatórias para meses anteorioes ou iguais a 2019 contém o nome do Mẽs
+				if int(year) <= 2019 :
+					if months[int(month)] in link['href']:
+						download_codes[key] = re.search('download=(.*):virt', link['href']).group(1)
+						break
+				else:
+			#Caso de busca especifico para verbas indenizatórias para meses posteriores ou iguais á 2020, 
+					target = month + year
+					if target in link['href']:
+						download_codes[key] = re.search('download=(.*):indeniz', link['href']).group(1)
+						break
+  
 	return download_codes
 			
-
 def download(url, file_path):
 	try:
 		response = requests.get(url, allow_redirects=True)
@@ -86,8 +101,8 @@ def download(url, file_path):
 
 def crawl(year, month, output_path):
 	files = []
-	download_codes = init_download_codes(year, month)
- 
+	codes = download_codes(year, month)
+	
 	for key in url_formats:
 		pathlib.Path(output_path).mkdir(exist_ok=True)
 		file_name = year + "_" + month + "_" + key + '.xls'
@@ -95,11 +110,15 @@ def crawl(year, month, output_path):
 		
 		if key == "remu":
 			base_url = folder_url.format(remu_year_codes[int(year)], url_complements[key], year)
-			url = url_formats[key].format(base_url, download_codes[key], month, year)
+			url = url_formats[key].format(base_url, codes[key], month, year)
 		else:
 			base_url = folder_url.format(vi_year_codes[int(year)], url_complements[key], year)
 			if int(year) <= 2019 :
-				url = url_formats[key].format(base_url, download_codes[key], months[int(month)], year)
+				url = url_formats[key].format(base_url, codes[key], months[int(month)], year)
+    
+			#Para anos posteriores á 2019 a url para download de verbas indenizatórias segue o formato
+			else:
+				url = base_url + '?download={}:indeniz{}{}'.format(codes[key], month, year)
 
 		download(url, file_path)
 		files.append(file_path)

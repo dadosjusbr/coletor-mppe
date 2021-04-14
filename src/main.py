@@ -1,5 +1,3 @@
-from dotenv import load_dotenv, find_dotenv
-from pathlib import Path
 import sys
 import os
 import datetime
@@ -42,7 +40,8 @@ if(int(year) > current_year):
     os._exit(1)
 
 # Main execution
-def main():
+if __name__ == '__main__':
+    print('execution')
     file_names = crawler.crawl(year, month, output_path)
     employees = parser.parse(file_names)
     cr = {
@@ -59,7 +58,3 @@ def main():
         'timestamp': now.astimezone().replace(microsecond=0).isoformat(),
     }
     print(json.dumps({'cr': cr}, ensure_ascii=False))
-
-
-if __name__ == '__main__':
-    main()
