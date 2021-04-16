@@ -71,7 +71,8 @@ def download_codes(year, month):
 		for link in soup.findAll('a', {'class': 'btn btn-success'}):
 			#Remunerações contém no link o numero do mês
 			if key == 'remu' :
-				if month in link['href']:
+				target = '-' + month + '-' + year
+				if target in link['href']:
 					download_codes[key] = re.search('download=(.*):membros', link['href']).group(1)
 					break
 			else:
@@ -86,7 +87,7 @@ def download_codes(year, month):
 					if target in link['href']:
 						download_codes[key] = re.search('download=(.*):indeniz', link['href']).group(1)
 						break
-  
+						
 	return download_codes
 			
 def download(url, file_path):
