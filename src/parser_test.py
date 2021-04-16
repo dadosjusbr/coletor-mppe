@@ -10,9 +10,9 @@ class TestParser(unittest.TestCase):
         expected = {    
             'reg': '1771124',
             'name': 'ADALBERTO MENDES PINTO VIEIRA',
-            'role': 'PROCURADOR DE JUSTICA                             ',
+            'role': 'PROCURADOR DE JUSTICA',
             'type': 'membro',
-            'workplace': 'GABINETE 4 PROCURADOR JUSTICA CRIMINAL            ',
+            'workplace': 'GABINETE 4 PROCURADOR JUSTICA CRIMINAL',
             'active': True,
             'income': {
                 'total': 41687.06,

@@ -30,9 +30,9 @@ def employees_parser(file_path):
     
     for row in rows:
         reg = str(row[0]) #Matrícula 
-        name = row[1] #Nome
-        role = row[2] #Cargo
-        workplace = row[3] #Lotação
+        name = row[1].strip() #Nome
+        role = row[2].strip() #Cargo
+        workplace = row[3].strip() #Lotação
         remuneration = row[4] #Remuneração do cargo efetivo
         other_verbs =  row[5] #Outras Verbas Remuneratórias, Legais ou Judiciais   
         trust_pos = row[6] #Função de Confiança ou Cargo em Comissão 
