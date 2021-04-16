@@ -41,7 +41,6 @@ if(int(year) > current_year):
 
 # Main execution
 if __name__ == '__main__':
-    print('execution')
     file_names = crawler.crawl(year, month, output_path)
     employees = parser.parse(file_names)
     cr = {
