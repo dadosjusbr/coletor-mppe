@@ -42,7 +42,7 @@ class TestParser(unittest.TestCase):
     
         files = ('./output_test/2019_01_remu.xls',
                 './output_test/2019_01_vi.xls')
-        employees = parser.parse(files)
+        employees = parser.parse(files, '01', '2019')
         
         #Verificações    
         self.assertEqual(1, len(employees))
