@@ -30,7 +30,7 @@ def employees_parser_2020(file_path):
     employees = {}
     
     for row in rows:
-        reg = str(row[0]) #Matrícula 
+        reg = str(int(row[0])) #Matrícula 
         name = row[1].strip() #Nome
         role = row[2].strip() #Cargo
         workplace = row[3].strip() #Lotação
@@ -98,7 +98,7 @@ def employees_parser(file_path):
     employees = {}
     
     for row in rows:
-        reg = str(row[0]) #Matrícula 
+        reg = str(int(row[0])) #Matrícula 
         name = row[1].strip() #Nome
         role = row[2].strip() #Cargo
         workplace = row[3].strip() #Lotação
@@ -214,67 +214,74 @@ def employees_idemnity(file_path, employees):
         van_exer = row[48] #563 VAN.EXER.ATU
         van_exer_ant = row[49] #564 VAN.EXER.ANT
         
-        emp = employees[reg]
+        #Há funcionários não listados na lista de remunerações mas listados na lista de indenizações
+        try:
+            emp = employees[reg]
+            exists = True
+        except:
+            exists = False
+
+        if exists :    
         
-        emp['income']['perks'].update({
-            'total': round(aux_ali + aux_refei + aux_saude + transporte + housing_aid, 2),
-            'food': aux_ali + aux_refei,
-            'health': aux_saude,
-            'transportation': transporte,
-            'housing_aid': housing_aid,
-        })
-        emp['income']['other']['others'].update({
-            '0053-L PREM S/TRB': prm,
-            '0098-ABON PER ATR': abon,
-            '0201-DIF ENTRANC': diff,
-            '0244-ADC SERV EXT': adc_ser_ex,
-            '0251-SERV EXT PLT': serv_ex_pĺt,
-            '0265-IND FERIAS': ind_ferias,
-            '0267-ADC AT ESPEC': adc_at_esp,
-            '0271-GRT SUB FGMP': grt_sub,
-            '0275-AD EXERCICIO': adc_exercicio, 
-            '0279-ADIC PR/TEMP': adc_pr,
-            '0400-VENCIM ATR': atr_venci,
-            '0401-DIF ENTR ATR': diff_entr,
-            '0403-QUINQ ATR': quino,
-            '0408-AB FER PR AT': fer_at,
-            '0416-PENS AL ATR': pens_ali,
-            '0420-INDZ ASS ATR' : indz_ass,
-            '0426-13 SAL ATR': sal_atr,
-            '0429-INDZ COO ATR': indz_coo,
-            '0434-AD L16307 AT': ad_li,
-            '0435-SUBSIDIO ATR': sub_atr,
-            '0443-AUX TRP ATR': aux_trp,
-            '0444-AD SV EX ATR': ad_sev_ex,
-            '0451-SV EX PL ATR': ad_sev_pl,
-            '0459-COM LIC ATR': ad_com,
-            '0463-A FERIAS ATR': adc_ferias,
-            '0467-AD AT ES ATR': ad_at,
-            '0469-AUX REF ATR': aux_ref_atr,
-            '0470-AUX ALIM ATR': aux_ali_atr, 
-            '0471-GR SU FG ATR': gr_su,
-            "0472-AUX SAUDE AT": aux_saude_atr,
-            '0475-ADIC EXE ATR': adc_exe,
-            '0479-AD PR/TP ATR': adc_pr,
-            '0480-GRT FGMP ATR': grt_fgmp,
-            '0483-IN CGSMP ATR': in_cgsmp,
-            '0486-IND OUV ATR': ind_ouv,
-            '522 ATS.TRIBUTAV': ats_tribu,
-            '523 ATS.N.TRIBUT': ats_ntribut,
-            '558 PAE NTRB ATR': pae_ntrb,
-            '559 PAE TRIB ATR': pae_trib,
-            '563 VAN.EXER.ATU': van_exer,
-            '564 VAN.EXER.ANT': van_exer_ant,
-        })
-        emp['income']['other'].update({
-            'others_total':round(
-                prm + abon + diff + adc_ser_ex + serv_ex_pĺt + ind_ferias  + adc_at_esp + grt_sub + adc_exercicio + 
-                adc_pr + atr_venci + diff_entr + quino + fer_at + pens_ali + indz_ass + sal_atr + indz_coo 
-                + ad_li + sub_atr + aux_trp + ad_sev_ex + ad_sev_pl + ad_com + adc_ferias + ad_at 
-                + aux_ref_atr + aux_ali_atr + gr_su + aux_saude_atr + adc_exe + adc_pr + grt_fgmp 
-                + in_cgsmp + ind_ouv + ats_tribu + ats_ntribut + pae_ntrb + pae_trib + van_exer 
-                + van_exer_ant, 2)
-        })
+            emp['income']['perks'].update({
+                'total': round(aux_ali + aux_refei + aux_saude + transporte + housing_aid, 2),
+                'food': aux_ali + aux_refei,
+                'health': aux_saude,
+                'transportation': transporte,
+                'housing_aid': housing_aid,
+            })
+            emp['income']['other']['others'].update({
+                '0053-L PREM S/TRB': prm,
+                '0098-ABON PER ATR': abon,
+                '0201-DIF ENTRANC': diff,
+                '0244-ADC SERV EXT': adc_ser_ex,
+                '0251-SERV EXT PLT': serv_ex_pĺt,
+                '0265-IND FERIAS': ind_ferias,
+                '0267-ADC AT ESPEC': adc_at_esp,
+                '0271-GRT SUB FGMP': grt_sub,
+                '0275-AD EXERCICIO': adc_exercicio, 
+                '0279-ADIC PR/TEMP': adc_pr,
+                '0400-VENCIM ATR': atr_venci,
+                '0401-DIF ENTR ATR': diff_entr,
+                '0403-QUINQ ATR': quino,
+                '0408-AB FER PR AT': fer_at,
+                '0416-PENS AL ATR': pens_ali,
+                '0420-INDZ ASS ATR' : indz_ass,
+                '0426-13 SAL ATR': sal_atr,
+                '0429-INDZ COO ATR': indz_coo,
+                '0434-AD L16307 AT': ad_li,
+                '0435-SUBSIDIO ATR': sub_atr,
+                '0443-AUX TRP ATR': aux_trp,
+                '0444-AD SV EX ATR': ad_sev_ex,
+                '0451-SV EX PL ATR': ad_sev_pl,
+                '0459-COM LIC ATR': ad_com,
+                '0463-A FERIAS ATR': adc_ferias,
+                '0467-AD AT ES ATR': ad_at,
+                '0469-AUX REF ATR': aux_ref_atr,
+                '0470-AUX ALIM ATR': aux_ali_atr, 
+                '0471-GR SU FG ATR': gr_su,
+                "0472-AUX SAUDE AT": aux_saude_atr,
+                '0475-ADIC EXE ATR': adc_exe,
+                '0479-AD PR/TP ATR': adc_pr,
+                '0480-GRT FGMP ATR': grt_fgmp,
+                '0483-IN CGSMP ATR': in_cgsmp,
+                '0486-IND OUV ATR': ind_ouv,
+                '522 ATS.TRIBUTAV': ats_tribu,
+                '523 ATS.N.TRIBUT': ats_ntribut,
+                '558 PAE NTRB ATR': pae_ntrb,
+                '559 PAE TRIB ATR': pae_trib,
+                '563 VAN.EXER.ATU': van_exer,
+                '564 VAN.EXER.ANT': van_exer_ant,
+            })
+            emp['income']['other'].update({
+                'others_total':round(
+                    prm + abon + diff + adc_ser_ex + serv_ex_pĺt + ind_ferias  + adc_at_esp + grt_sub + adc_exercicio + 
+                    adc_pr + atr_venci + diff_entr + quino + fer_at + pens_ali + indz_ass + sal_atr + indz_coo 
+                    + ad_li + sub_atr + aux_trp + ad_sev_ex + ad_sev_pl + ad_com + adc_ferias + ad_at 
+                    + aux_ref_atr + aux_ali_atr + gr_su + aux_saude_atr + adc_exe + adc_pr + grt_fgmp 
+                    + in_cgsmp + ind_ouv + ats_tribu + ats_ntribut + pae_ntrb + pae_trib + van_exer 
+                    + van_exer_ant, 2)
+            })
     
     return employees
     
