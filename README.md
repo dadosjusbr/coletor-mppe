@@ -40,7 +40,12 @@ As planilhas referentes á remunerações possuem as seguintes colunas:
 - Todos os anos possuem um código que varia para remunerações simples, forçando mapeamento.  Exemplo: 2018 está associado ao código 415, 2019 ao código 451, 2020 ao código 510. Não existindo progressão lógica a necessidade de mapeamento adiciona complexidade de código.
 - Cada planilha possui um código de identificação que varia e que deve ser enviado na requisição, forçando busca.
 - Download Verbas Indenizatórias referentes á 2018 e 2019 recebem o nome do mês (Janeiro, Feveiro ... ) como parâmetro da url, anos posteriores recebem o numeral referente ao mês (01 para Janeiro, 02 para Fevereiro ....).
-- Nome das planilhas de verbas indenizatórias alterados nas urls posteriores após 2019. Exemplo: para 2018 e 2019 temos: ('virt'), para 2020 em diante temos: ('indeniz') . 
+- Nome das planilhas de verbas indenizatórias alterados nas urls posteriores após 2019. Exemplo: para 2018 e 2019 temos: ('virt'), para 2020 em diante temos: ('indeniz').
+- Exemplos de urls, ilustrando os problemas: 
+    - https://transparencia.mppe.mp.br/index.php/contracheque/category/405-remuneracao-de-todos-os-membros-ativos-2018?download=4784:membros-ativos-12-2018
+    -  https://transparencia.mppe.mp.br/index.php/contracheque/category/504-remuneracao-de-todos-os-membros-ativos-2020?download=6429:membros-ativos-12-2020
+    - https://transparencia.mppe.mp.br/index.php/contracheque/category/451-verbas-indenizatorias-e-outras-remuneracoes-temporarias-2019?download=5651:virt-dezembro-2019
+    - https://transparencia.mppe.mp.br/index.php/contracheque/category/555-verbas-indenizatorias-e-outras-remuneracoes-temporarias-2021?download=6729:indeniz032021
 
 ## Dificuldades de Parsing:
 
