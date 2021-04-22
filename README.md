@@ -36,8 +36,8 @@ As planilhas referentes á remunerações possuem as seguintes colunas:
 
 ## Dificuldades de coleta:
 
-- Todos os anos possuem um código que varia para Verbas Indenizatórias, forçando mapeamento.
-- Todos os anos possuem um código que varia para remunerações simples, forçando mapeamento.
+- Todos os anos possuem um código que varia para Verbas Indenizatórias, forçando mapeamento. Exemplo: 2018 está associado ao código 405, 2019 ao código 445, 2020 ao código 504. Não existindo progressão lógica a necessidade de mapeamento adiciona complexidade de código.
+- Todos os anos possuem um código que varia para remunerações simples, forçando mapeamento.  Exemplo: 2018 está associado ao código 415, 2019 ao código 451, 2020 ao código 510. Não existindo progressão lógica a necessidade de mapeamento adiciona complexidade de código.
 - Cada planilha possui um código de identificação que varia e que deve ser enviado na requisição, forçando busca.
 - Download Verbas Indenizatórias referentes á 2018 e 2019 recebem o nome do mês (Janeiro, Feveiro ... ) como parâmetro da url, anos posteriores recebem o numeral referente ao mês (01 para Janeiro, 02 para Fevereiro ....).
 - Nome das planilhas de verbas indenizatórias alterados nas urls posteriores após 2019. Exemplo: para 2018 e 2019 temos: ('virt'), para 2020 em diante temos: ('indeniz') . 
