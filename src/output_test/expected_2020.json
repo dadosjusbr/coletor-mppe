@@ -1,0 +1,310 @@
+{
+    "contraCheque": [
+        {
+            "idContraCheque": "mppe/1/2020/1",
+            "chaveColeta": "mppe/1/2020",
+            "nome": "ADEMILTON DAS VIRGENS CARVALHO LEITÃO",
+            "matricula": "1892770",
+            "funcao": "PROMOTOR 2. ENTRANCIA                             ",
+            "localTrabalho": "GAB 1 PROM JUSTICA CRIMINAL PAULISTA              ",
+            "ativo": true,
+            "remuneracoes": {
+                "remuneracao": [
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Remuneração do cargo efetivo",
+                        "valor": 32004.65
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Outras Verbas Remuneratórias, Legais ou Judiciais",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Função de Confiança ou Cargo em Comissão",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Gratificação Natalina",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Férias (1/3 constitucional)",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Abono de Permanência",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Outras Remunerações Retroativas/Temporárias",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Total de rendimentos brutos",
+                        "valor": 33572.65,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Contribuição Previdenciária",
+                        "valor": -4320.63,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Imposto de Renda",
+                        "valor": -6587.33,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Retenção do Teto",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0053-L PREM S/TRB",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0243-AUX TRANSP",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0261-AUX MORADIA",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0269-AUX REFEICAO",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0270-AUX ALIM",
+                        "valor": 1068.0,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0272-AUX SAUDE",
+                        "valor": 500.0,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0098-ABON PER ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0201-DIF ENTRANC",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0244-ADC SERV EXT",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0251-SERV EXT PLT",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0265-IND FERIAS",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0267-ADC AT ESPEC",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0271-GRT SUB FGMP",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0275-AD EXERCICIO",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0279-ADIC PR/TEMP",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0400-VENCIM ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0401-DIF ENTR ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0403-QUINQ ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0408-AB FER PR AT",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0416-PENS AL ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0420-INDZ ASS ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0426-13 SAL ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0429-INDZ COO ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0434-AD L16307 AT",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0435-SUBSIDIO ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0443-AUX TRP ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0444-AD SV EX ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0451-SV EX PL ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0459-COM LIC ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0463-A FERIAS ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0467-AD AT ES ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0469-AUX REF ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0470-AUX ALIM ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0471-GR SU FG ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0472-AUX SAUDE AT",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0475-ADIC EXE ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0479-AD PR/TP ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0480-GRT FGMP ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0483-IN CGSMP ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "0486-IND OUV ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "522 ATS.TRIBUTAV",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "523 ATS.N.TRIBUT",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "558 PAE NTRB ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "559 PAE TRIB ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "563 VAN.EXER.ATU",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "564 VAN.EXER.ANT",
+                        "tipoReceita": "O"
+                    }
+                ]
+            }
+        }
+    ]
+}
