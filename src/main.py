@@ -1,59 +1,80 @@
+# coding: utf8
 import sys
 import os
-import datetime
-import parser
+
+from coleta import coleta_pb2 as Coleta, IDColeta
+from google.protobuf.timestamp_pb2 import Timestamp
+from google.protobuf import text_format
+
 import crawler
-import json
+from parser import parse
+import metadado
+import data
 
-if('MONTH' in os.environ):
-    month = os.environ['MONTH']
+
+if "YEAR" in os.environ:
+    year = os.environ["YEAR"]
 else:
-    sys.stderr.write("Invalid arguments, missing environment variable: 'MONTH'.\n")
-    os._exit(1)
-if('YEAR' in os.environ):
-    year = os.environ['YEAR']
-else:
-    sys.stderr.write("Invalid arguments, missing environment variable: 'YEAR'.\n")
-    os._exit(1)
-if('OUTPUT_FOLDER' in os.environ):
-    output_path = os.environ['OUTPUT_FOLDER']
-else:
-    output_path = "/output"
-if('GIT_COMMIT' in os.environ):
-    crawler_version = os.environ['GIT_COMMIT']
-else:
-    sys.stderr.write("Invalid arguments, missing environment variable: 'GIT_COMMIT'.\n")
+    sys.stderr.write("Invalid arguments, missing parameter: 'YEAR'.\n")
     os._exit(1)
 
-now = datetime.datetime.now()
-current_year = now.year
-current_month = now.month
+if "MONTH" in os.environ:
+    month = os.environ["MONTH"]
+    month = month.zfill(2)
+else:
+    sys.stderr.write("Invalid arguments, missing parameter: 'MONTH'.\n")
+    os._exit(1)
 
-if((int(month) < 1) | (int(month) > 12)):
-    sys.stderr.write("Invalid month {}: InvalidParameters.\n".format(month))
-    os._exit(1)
-if((int(year) == current_year) & (int(month) > current_month)):
-    sys.stderr.write("As master Yoda would say: 'one must not crawl/parse the future {}/{}'.\n".format(month, year))
-    os._exit(1)
-if(int(year) > current_year):
-    sys.stderr.write("As master Yoda would say: 'one must not crawl/parse the future {}/{}'.\n".format(month, year))
-    os._exit(1)
+if "OUTPUT_FOLDER" in os.environ:
+    output_path = os.environ["OUTPUT_FOLDER"]
+else:
+    output_path = "./output"
+
+if "GIT_COMMIT" in os.environ:
+    crawler_version = os.environ["GIT_COMMIT"]
+else:
+    crawler_version = "unspecified"
+
+
+def parse_execution(data, file_names):
+    # Cria objeto com dados da coleta.
+    coleta = Coleta.Coleta()
+    coleta.chave_coleta = IDColeta("mppe", month, year)
+    coleta.orgao = "mppe"
+    coleta.mes = int(month)
+    coleta.ano = int(year)
+    coleta.repositorio_coletor = "https://github.com/dadosjusbr/coletor-mppe"
+    coleta.versao_coletor = crawler_version
+    coleta.arquivos.extend(file_names)
+    timestamp = Timestamp()
+    timestamp.GetCurrentTime()
+    coleta.timestamp_coleta.CopyFrom(timestamp)
+
+    # Consolida folha de pagamento
+    folha = Coleta.FolhaDePagamento()
+    folha = parse(data, coleta.chave_coleta, int(month), int(year))
+
+    # Monta resultado da coleta.
+    rc = Coleta.ResultadoColeta()
+    rc.folha.CopyFrom(folha)
+    rc.coleta.CopyFrom(coleta)
+
+    metadados = metadado.captura(int(month), int(year))
+    rc.metadados.CopyFrom(metadados)
+
+    # Imprime a versão textual na saída padrão.
+    print(text_format.MessageToString(rc), flush=True, end="")
+
 
 # Main execution
-if __name__ == '__main__':
+def main():
     file_names = crawler.crawl(year, month, output_path)
-    employees = parser.parse(file_names, month, year)
-    cr = {
-        'aid': 'mppe',
-        'month': int(month),
-        'year': int(year),
-        'files': file_names,
-        'crawler': {
-            'id': 'mppe',
-            'version': crawler_version,
-        },
-        'employees': employees,
-        # https://hackernoon.com/today-i-learned-dealing-with-json-datetime-when-unmarshal-in-golang-4b281444fb67
-        'timestamp': now.astimezone().replace(microsecond=0).isoformat(),
-    }
-    print(json.dumps({'cr': cr}, ensure_ascii=False))
+
+    dados = data.load(file_names, year, month)
+    dados.validate()  # Se não acontecer nada, é porque está tudo ok!
+
+    parse_execution(dados, file_names)
+
+
+if __name__ == "__main__":
+    main()
