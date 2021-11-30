@@ -42,30 +42,21 @@
                         "tipoReceita": "O"
                     },
                     {
-                        "categoria": "contracheque_2018_06-2019",
-                        "item": "Total de rendimentos brutos",
-                        "valor": 41687.06,
-                        "tipoReceita": "O"
-                    },
-                    {
                         "natureza": "D",
                         "categoria": "contracheque_2018_06-2019",
                         "item": "Contribuição Previdenciária",
-                        "valor": -6224.84,
-                        "tipoReceita": "O"
+                        "valor": -6224.84
                     },
                     {
                         "natureza": "D",
                         "categoria": "contracheque_2018_06-2019",
                         "item": "Imposto de Renda",
-                        "valor": -11810.87,
-                        "tipoReceita": "O"
+                        "valor": -11810.87
                     },
                     {
                         "natureza": "D",
                         "categoria": "contracheque_2018_06-2019",
-                        "item": "Retenção do Teto",
-                        "tipoReceita": "O"
+                        "item": "Retenção do Teto"
                     },
                     {
                         "categoria": "contracheque_2018_06-2019",

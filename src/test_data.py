@@ -4,8 +4,8 @@ from data import load
 
 
 file_names = [
-    "output_test/2020_01_remu.xlsx",
-    "output_test/2020_01_vi.xlsx",
+    "output_test/membros-ativos-contracheque-01-2020.xlsx",
+    "output_test/membros-ativos-verbas-indenizatorias-01-2020.xlsx",
 ]
 
 
