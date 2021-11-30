@@ -28,12 +28,12 @@ def load(file_names, year, month):
      :return um objeto Data() pronto para operar com os arquivos
     """
 
-    contracheque = _read([c for c in file_names if "remu" in c][0])
+    contracheque = _read([c for c in file_names if "contracheque" in c][0])
     if int(year) == 2018 or (int(year) == 2019 and int(month) < 7):
         # Não existe dados exclusivos de verbas indenizatórias nesse período de tempo.
         return Data_2018(contracheque, year, month)
 
-    indenizatorias = _read([i for i in file_names if "vi" in i][0])
+    indenizatorias = _read([i for i in file_names if "verbas-indenizatorias" in i][0])
 
     return Data(contracheque, indenizatorias, year, month)
 
@@ -56,10 +56,10 @@ class Data:
 
         if not (
             os.path.isfile(
-                f"./output/{self.year}_{self.month}_remu.xlsx"
+                f"./output/membros-ativos-contracheque-{self.month}-{self.year}.xlsx"
             )
             or os.path.isfile(
-                f"./output/{self.year}_{self.month}_vi.xlsx"
+                f"./output/membros-verbas-indenizatorias-{self.month}-{self.year}.xlsx"
             )
         ):
             sys.stderr.write(f"Não existe planilhas para {self.month}/{self.year}.")
@@ -82,7 +82,7 @@ class Data_2018:
 
         if not (
             os.path.isfile(
-                f"./output/{self.year}_{self.month}_remu.xlsx"
+                f"./output/membros-ativos-contracheque-{self.month}-{self.year}.xlsx"
             )
         ):
             sys.stderr.write(f"Não existe planilha para {self.month}/{self.year}.")
