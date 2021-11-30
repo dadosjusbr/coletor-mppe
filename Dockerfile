@@ -1,5 +1,5 @@
 # set base image (host OS)
-FROM python:3.8
+FROM python:3.8-slim-buster
 
 # set the working directory in the container
 WORKDIR /code
@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 COPY src/ .
 
 # command to run on container start
-CMD [ "python", "./main.py"]
+CMD [ "python", "main.py"]
