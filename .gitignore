@@ -1,0 +1,4 @@
+.vscode
+.~lock*
+output
+__pycache__
