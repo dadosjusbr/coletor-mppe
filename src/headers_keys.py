@@ -11,7 +11,6 @@ HEADERS = {
         "Férias (1/3 constitucional)": 8,
         "Abono de Permanência": 9,
         "Outras Remunerações Retroativas/Temporárias": 10,
-        "Total de rendimentos brutos": 12,
         "Contribuição Previdenciária": 13,
         "Imposto de Renda": 14,
         "Retenção do Teto": 15,
@@ -24,7 +23,6 @@ HEADERS = {
         "Gratificação Natalina": 7,
         "Férias (1/3 constitucional)": 8,
         "Abono de Permanência": 9,
-        "Total de rendimentos brutos": 10,
         "Contribuição Previdenciária": 11,
         "Imposto de Renda": 12,
         "Retenção do Teto": 13,
@@ -34,13 +32,11 @@ HEADERS = {
 
     INDENIZACOES: {
         "0053-L PREM S/TRB": 4,
-
         "0243-AUX TRANSP": 5,
         "0261-AUX MORADIA": 6,
         "0269-AUX REFEICAO": 7,
         "0270-AUX ALIM": 8,
         "0272-AUX SAUDE": 9,
-
         "0098-ABON PER ATR": 10,
         "0201-DIF ENTRANC": 11,
         "0244-ADC SERV EXT": 12,
