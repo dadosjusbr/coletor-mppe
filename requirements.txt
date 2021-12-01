@@ -1,6 +1,7 @@
 beautifulsoup4==4.9.3
 pandas==1.2.4
-protoDadosjusbr==0.7
+protoDadosjusbr>=0.7
 protobuf==3.18.0
 soupsieve==2.2.1
 odfpy>=1.4.1
+requests==2.25.1
