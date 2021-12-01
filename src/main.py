@@ -70,7 +70,7 @@ def parse_execution(data, file_names):
 def main():
     file_names = crawler.crawl(year, month, output_path)
 
-    dados = data.load(file_names, year, month)
+    dados = data.load(file_names, year, month, output_path)
     dados.validate()  # Se não acontecer nada, é porque está tudo ok!
 
     parse_execution(dados, file_names)
