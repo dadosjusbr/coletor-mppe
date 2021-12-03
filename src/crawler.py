@@ -1,24 +1,26 @@
-import requests
 import sys
 import os 
 import pathlib
+import requests
+
+import re
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-import re
+
 
 #Url base refente ao  direntório que contém as planilhas: year_code - url_complement - key
 folder_url = 'https://transparencia.mppe.mp.br/index.php/contracheque/category/{}-{}-{}'
 
 #Complementos para folder_url
 url_complements = {
-    'remu':'remuneracao-de-todos-os-membros-ativos', 
-	'vi':  'verbas-indenizatorias-e-outras-remuneracoes-temporarias'
+    "contracheque":'remuneracao-de-todos-os-membros-ativos', 
+	"verbas-indenizatorias":  'verbas-indenizatorias-e-outras-remuneracoes-temporarias'
 }
 
 #Formato de envio da requisição: folder_url - download_code - month - year  
 url_formats = {
-	'remu': "{}?download={}:membros-ativos-{}-{}",
-	'vi': "{}?download={}:virt-{}-{}"
+	"contracheque": "{}?download={}:membros-ativos-{}-{}",
+	"verbas-indenizatorias": "{}?download={}:virt-{}-{}"
 } 
 
 # Todos os anos possuem um código associado para remunerações simples variando ano-a-ano
@@ -59,7 +61,7 @@ def download_codes(year, month):
     
 	for key in url_complements:
 
-		if key == 'remu':
+		if key == "contracheque":
 			url = folder_url.format(remu_year_codes[int(year)], url_complements[key], year)
 		else: 
 			url = folder_url.format(vi_year_codes[int(year)], url_complements[key], year)
@@ -70,19 +72,19 @@ def download_codes(year, month):
 		#Intera sob as tags de download que contém o download code
 		for link in soup.findAll('a', {'class': 'btn btn-success'}):
 			#Remunerações contém no link o numero do mês
-			if key == 'remu' :
+			if key == "contracheque" :
 				target = '-' + month + '-' + year
 				if target in link['href']:
 					download_codes[key] = re.search('download=(.*):membros', link['href']).group(1)
 					break
 			else:
-			#Verbas indenizatórias para meses anteorioes ou iguais a 2019 contém o nome do Mẽs
+			#Verbas indenizatórias para meses anteriores ou iguais a 2019 contém o nome do Mês
 				if int(year) <= 2019 :
 					if months[int(month)] in link['href']:
 						download_codes[key] = re.search('download=(.*):virt', link['href']).group(1)
 						break
 				else:
-			#Caso de busca especifico para verbas indenizatórias para meses posteriores ou iguais á 2020, 
+				#Caso de busca especifico para verbas indenizatórias para meses posteriores ou iguais á 2020
 					target = month + year
 					if target in link['href']:
 						download_codes[key] = re.search('download=(.*):indeniz', link['href']).group(1)
@@ -106,10 +108,10 @@ def crawl(year, month, output_path):
 	
 	for key in url_formats:
 		pathlib.Path(output_path).mkdir(exist_ok=True)
-		file_name = year + "_" + month + "_" + key + '.xls'
+		file_name = "membros-ativos-" + key + "-" + month + "-" + year + '.xlsx'
 		file_path = output_path + '/' + file_name
 		
-		if key == "remu":
+		if key == "contracheque":
 			base_url = folder_url.format(remu_year_codes[int(year)], url_complements[key], year)
 			url = url_formats[key].format(base_url, codes[key], month, year)
 		else:
@@ -117,7 +119,7 @@ def crawl(year, month, output_path):
 			if int(year) <= 2019 :
 				url = url_formats[key].format(base_url, codes[key], months[int(month)], year)
     
-			#Para anos posteriores á 2019 a url para download de verbas indenizatórias segue o formato
+			#Para anos posteriores à 2019 a url para download de verbas indenizatórias segue o formato
 			else:
 				url = base_url + '?download={}:indeniz{}{}'.format(codes[key], month, year)
 
