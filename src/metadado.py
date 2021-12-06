@@ -19,8 +19,8 @@ def captura(month, year):
     metadado.despesas = Coleta.Metadados.OpcoesDetalhamento.DETALHADO
     metadado.receita_base = Coleta.Metadados.OpcoesDetalhamento.DETALHADO
     metadado.outras_receitas = Coleta.Metadados.OpcoesDetalhamento.DETALHADO
-    # Planilha de verbas indenizatórias disponível a partir desse mês:
-    if int(year) == 2019 and int(month) == 7:
+    # Meses onde aconteceu uma mudança nos formatos das planilhas:
+    if int(year) == 2019 and int(month) in [7, 12]:
         metadado.formato_consistente = False
     # Não tem planilhas detalhando, apenas o total:
     if int(year) == 2018 or (int(year) == 2019 and int(month) < 7):
