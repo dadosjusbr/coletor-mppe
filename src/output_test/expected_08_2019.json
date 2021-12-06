@@ -1,0 +1,231 @@
+{
+    "contraCheque": [
+        {
+            "idContraCheque": "mppe/8/2019/1",
+            "chaveColeta": "mppe/8/2019",
+            "nome": "ADEMILTON DAS VIRGENS CARVALHO LEITÃO",
+            "matricula": "1892770",
+            "funcao": "PROMOTOR 2. ENTRANCIA                             ",
+            "localTrabalho": "GAB 1 PROM JUSTICA CRIMINAL PAULISTA              ",
+            "ativo": true,
+            "remuneracoes": {
+                "remuneracao": [
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Remuneração do cargo efetivo",
+                        "valor": 32004.65
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Outras Verbas Remuneratórias, Legais ou Judiciais",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Função de Confiança ou Cargo em Comissão",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Gratificação Natalina",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Férias (1/3 constitucional)",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Abono de Permanência",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Outras Remunerações Retroativas/Temporárias",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Contribuição Previdenciária",
+                        "valor": -4320.63
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Imposto de Renda",
+                        "valor": -6587.33
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque_07-2019_2021",
+                        "item": "Retenção do Teto"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0243-AUX TRANSP",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0261-AUX MORADIA",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0269-AUX REFEICAO",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0270-AUX ALIM",
+                        "valor": 1068.0,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0272-AUX SAUDE",
+                        "valor": 500.0,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0201-DIF ENTRANC",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0244-ADC SERV EXT",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0251-SERV EXT PLT",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0267-ADC AT ESPEC",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0271-GRT SUB FGMP",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0275-AD EXERCICIO",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0279-ADIC PR/TEMP",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0400-VENCIM ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0408-AB FER PR AT",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0416-PENS AL ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0429-INDZ COO ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0435-SUBSIDIO ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0444-AD SV EX ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0451-SV EX PL ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0463-A FERIAS ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0469-AUX REF ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0470-AUX ALIM ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0471-GR SU FG ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0472-AUX SAUDE AT",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0475-ADIC EXE ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "0479-AD PR/TP ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "522 ATS.TRIBUTAV",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "523 ATS.N.TRIBUT",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "558 PAE NTRB ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "559 PAE TRIB ATR",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "563 VAN.EXER.ATU",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "divergentes",
+                        "item": "564 VAN.EXER.ANT",
+                        "tipoReceita": "O"
+                    }
+                ]
+            }
+        }
+    ]
+}
