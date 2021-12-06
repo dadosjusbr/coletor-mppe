@@ -5,3 +5,4 @@ protobuf==3.18.0
 soupsieve==2.2.1
 odfpy>=1.4.1
 requests==2.25.1
+openpyxl==3.0.9
