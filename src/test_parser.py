@@ -11,12 +11,12 @@ class TestParser(unittest.TestCase):
     def test_jan_2018(self):
         self.maxDiff = None
         # Json com a saida esperada
-        with open('output_test/expected_2019.json', 'r') as fp:
+        with open('src/output_test/expected_2019.json', 'r') as fp:
             expected = json.load(fp)
 
-        files = ['output_test/membros-ativos-contracheque-01-2019.xlsx']
+        files = ['src/output_test/membros-ativos-contracheque-01-2019.xlsx']
                  
-        dados = load(files, '2019', '01', './output_test')
+        dados = load(files, '2019', '01', 'src/output_test')
         result_data = parse(dados, 'mppe/01/2019', '01', '2019')
         # Converto o resultado do parser, em dict
         result_to_dict = MessageToDict(result_data)
@@ -27,13 +27,13 @@ class TestParser(unittest.TestCase):
     def test_jan_2020(self):
         self.maxDiff = None
         # Json com a saida esperada
-        with open('output_test/expected_2020.json', 'r') as fp:
+        with open('src/output_test/expected_2020.json', 'r') as fp:
             expected = json.load(fp)
 
-        files = ['output_test/membros-ativos-contracheque-01-2020.xlsx',
-                'output_test/membros-ativos-verbas-indenizatorias-01-2020.xlsx',]
+        files = ['src/output_test/membros-ativos-contracheque-01-2020.xlsx',
+                'src/output_test/membros-ativos-verbas-indenizatorias-01-2020.xlsx',]
 
-        dados = load(files, '2020', '01', './output_test')
+        dados = load(files, '2020', '01', 'src/output_test')
         result_data = parse(dados, 'mppe/1/2020', '01', '2020')
         # Converto o resultado do parser, em dict
         result_to_dict = MessageToDict(result_data)
