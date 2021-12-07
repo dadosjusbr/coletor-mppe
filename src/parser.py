@@ -1,4 +1,3 @@
-
 # coding: utf8
 import sys
 import os
@@ -6,7 +5,7 @@ import os
 from coleta import coleta_pb2 as Coleta
 
 from headers_keys import (CONTRACHEQUE_ATE_AGOSTO_2019, CONTRACHEQUE_DEPOIS_DE_AGOSTO_2019,
-                          INDENIZACOES, HEADERS)
+                          INDENIZACOES, INDENIZACOES_07_A_11_2019, HEADERS)
 import number
 
 
@@ -15,6 +14,8 @@ def parse_employees(fn, chave_coleta, categoria):
     counter = 1
     for row in fn:
         matricula = row[0]
+        if matricula == 'TOTAL GERAL':
+                break
         name = row[1]
         if not number.is_nan(name) and not number.is_nan(matricula) and name != "0" and name != "NOME":
             membro = Coleta.ContraCheque()
@@ -31,7 +32,7 @@ def parse_employees(fn, chave_coleta, categoria):
                 cria_remuneracao(row, categoria)
             )
             
-            employees[name] = membro
+            employees[matricula] = membro
             counter += 1
     return employees
 
@@ -70,12 +71,12 @@ def cria_remuneracao(row, categoria):
 
 def update_employees(fn, employees, categoria):
     for row in fn:
-        name = row[1]
-        if name in employees.keys():
-            emp = employees[name]
+        matricula = row[0]
+        if matricula in employees.keys():
+            emp = employees[matricula]
             remu = cria_remuneracao(row, categoria)
             emp.remuneracoes.MergeFrom(remu)
-            employees[name] = emp
+            employees[matricula] = emp
     return employees
 
 
@@ -98,7 +99,10 @@ def parse(data, chave_coleta, mes, ano):
             employees.update(parse_employees(
                     data.contracheque, chave_coleta, CONTRACHEQUE_DEPOIS_DE_AGOSTO_2019
                 ))
-            update_employees(data.indenizatorias, employees, INDENIZACOES)
+            if int(ano) == 2019 and int(mes) in [7, 8, 9, 10, 11]:
+                update_employees(data.indenizatorias, employees, INDENIZACOES_07_A_11_2019)
+            else:
+                update_employees(data.indenizatorias, employees, INDENIZACOES)
 
         except KeyError as e:
             sys.stderr.write(

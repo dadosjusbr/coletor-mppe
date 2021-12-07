@@ -1,6 +1,7 @@
 CONTRACHEQUE_ATE_AGOSTO_2019 = "contracheque_2018_06-2019"
 CONTRACHEQUE_DEPOIS_DE_AGOSTO_2019 = "contracheque_07-2019_2021"
 INDENIZACOES = "indenizações"
+INDENIZACOES_07_A_11_2019 = "divergentes"
 
 HEADERS = {
     CONTRACHEQUE_DEPOIS_DE_AGOSTO_2019: {
@@ -28,6 +29,41 @@ HEADERS = {
         "Retenção do Teto": 13,
         "Indenizações": 16,
         "Outras Remunerações Retroativas/Temporárias": 17,
+    },
+
+    INDENIZACOES_07_A_11_2019: {
+        "0243-AUX TRANSP": 4,
+        "0261-AUX MORADIA": 5,
+        "0269-AUX REFEICAO": 6,
+        "0270-AUX ALIM": 7,
+        "0272-AUX SAUDE": 8,
+        "0201-DIF ENTRANC": 9,
+        "0244-ADC SERV EXT": 10,
+        "0251-SERV EXT PLT": 11,
+        "0267-ADC AT ESPEC": 12,
+        "0271-GRT SUB FGMP": 13,
+        "0275-AD EXERCICIO": 14,
+        "0279-ADIC PR/TEMP": 15,
+        "0400-VENCIM ATR": 16,
+        "0408-AB FER PR AT": 17,
+        "0416-PENS AL ATR": 18,
+        "0429-INDZ COO ATR": 19,
+        "0435-SUBSIDIO ATR": 20,
+        "0444-AD SV EX ATR": 21,
+        "0451-SV EX PL ATR": 22,
+        "0463-A FERIAS ATR": 23,
+        "0469-AUX REF ATR": 24,
+        "0470-AUX ALIM ATR": 25,
+        "0471-GR SU FG ATR": 26,
+        "0472-AUX SAUDE AT": 27,
+        "0475-ADIC EXE ATR": 28,
+        "0479-AD PR/TP ATR": 29,
+        "522 ATS.TRIBUTAV": 30,
+        "523 ATS.N.TRIBUT": 31,
+        "558 PAE NTRB ATR": 32,
+        "559 PAE TRIB ATR": 33,
+        "563 VAN.EXER.ATU": 34,
+        "564 VAN.EXER.ANT": 35,
     },
 
     INDENIZACOES: {
@@ -79,6 +115,5 @@ HEADERS = {
         "564 VAN.EXER.ANT": 49,
     }
 }
-
 
 
