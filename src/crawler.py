@@ -105,25 +105,28 @@ def download(url, file_path):
 def crawl(year, month, output_path):
 	files = []
 	codes = download_codes(year, month)
-	
-	for key in url_formats:
-		pathlib.Path(output_path).mkdir(exist_ok=True)
-		file_name = "membros-ativos-" + key + "-" + month + "-" + year + '.xlsx'
-		file_path = output_path + '/' + file_name
-		
-		if key == "contracheque":
-			base_url = folder_url.format(remu_year_codes[int(year)], url_complements[key], year)
-			url = url_formats[key].format(base_url, codes[key], month, year)
-		else:
-			base_url = folder_url.format(vi_year_codes[int(year)], url_complements[key], year)
-			if int(year) <= 2019 :
-				url = url_formats[key].format(base_url, codes[key], months[int(month)], year)
-    
-			#Para anos posteriores à 2019 a url para download de verbas indenizatórias segue o formato
+	try:
+		for key in url_formats:
+			pathlib.Path(output_path).mkdir(exist_ok=True)
+			file_name = "membros-ativos-" + key + "-" + month + "-" + year + '.xlsx'
+			file_path = output_path + '/' + file_name
+			
+			if key == "contracheque":
+				base_url = folder_url.format(remu_year_codes[int(year)], url_complements[key], year)
+				url = url_formats[key].format(base_url, codes[key], month, year)
 			else:
-				url = base_url + '?download={}:indeniz{}{}'.format(codes[key], month, year)
+				base_url = folder_url.format(vi_year_codes[int(year)], url_complements[key], year)
+				if int(year) <= 2019 :
+					url = url_formats[key].format(base_url, codes[key], months[int(month)], year)
+		
+				#Para anos posteriores à 2019 a url para download de verbas indenizatórias segue o formato
+				else:
+					url = base_url + '?download={}:indeniz{}{}'.format(codes[key], month, year)
 
-		download(url, file_path)
-		files.append(file_path)
+			download(url, file_path)
+			files.append(file_path)
+	except:
+		sys.stderr.write(f"Não existe planilha para {month}/{year}")
+		sys.exit(4)
 
 	return files
