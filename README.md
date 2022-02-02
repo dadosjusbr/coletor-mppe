@@ -1,3 +1,5 @@
+![Docker](https://github.com/dadosjusbr/coletor-mppe/actions/workflows/docker-publish.yml/badge.svg)    
+
 # Ministério Público do Estado de Pernambuco
 
 Este coletor tem como objetivo a recuperação de informações sobre folhas de pagamentos dos funcionários do Ministério Público do Estado de Pernambuco. O site com as informações pode ser acessado [aqui](https://transparencia.mppe.mp.br/index.php/contracheque/category/225-proventos-de-todos-os-membros-inativos).
