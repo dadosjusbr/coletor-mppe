@@ -28,7 +28,8 @@ remu_year_codes = {
 	2018: 405,
 	2019: 445,
 	2020: 504,
-	2021: 548
+	2021: 548,
+	2022: 623
 }
 
 # Todos os anos possuem um código associado para verbas indenizatórias variando ano-a-ano
@@ -36,7 +37,8 @@ vi_year_codes = {
 	2018: 415,
 	2019: 451,
 	2020: 510,
-	2021: 555
+	2021: 555,
+	2022: 629
 } 
 
 # Verbas indenizatórias referentes á 2018 e 2019 recebem o nome do mẽs como parâmetro
