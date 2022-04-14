@@ -2,3 +2,4 @@
 .~lock*
 output
 __pycache__
+.env
