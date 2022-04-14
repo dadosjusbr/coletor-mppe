@@ -5,7 +5,7 @@ import os
 from coleta import coleta_pb2 as Coleta
 
 from headers_keys import (CONTRACHEQUE_ATE_AGOSTO_2019, CONTRACHEQUE_DEPOIS_DE_AGOSTO_2019,
-                          INDENIZACOES, INDENIZACOES_07_A_11_2019, HEADERS)
+                          INDENIZACOES, INDENIZACOES_07_A_11_2019, HEADERS, INDENIZACOES_02_DE_2022)
 import number
 
 
@@ -101,6 +101,8 @@ def parse(data, chave_coleta, mes, ano):
                 ))
             if int(ano) == 2019 and int(mes) in [7, 8, 9, 10, 11]:
                 update_employees(data.indenizatorias, employees, INDENIZACOES_07_A_11_2019)
+            elif int(ano) == 2022 and int(mes) == 2:
+                update_employees(data.indenizatorias, employees, INDENIZACOES_02_DE_2022)
             else:
                 update_employees(data.indenizatorias, employees, INDENIZACOES)
 
