@@ -10,20 +10,6 @@ O coletor será estruturado como uma CLI. Uma vez passado como argumentos mês e
 
 - Tipo II - Verbas Indenizatórias e outras remunerações temporárias referentes há membros ativos.
 
-# Coletando sem utilizar Docker
-
-- Adicionar arquivo **.env** na raíz do projeto, com as variáveis do arquivo **.env.example**.
-
-Por exemplo, para realizar a coleta do mês de novembro de 2020 é preciso:
-
-> ## Windows
-
-- Instalar o Visual Studio: https://visualstudio.microsoft.com/pt-br/downloads/
-- Baixar o compilador de C++ do Visual Studio;
-- Executar o comando `pip install -r requirements.txt` ;
-- Adicionar arquivo **.env** na raíz do projeto, com as variáveis de ambiente, e seus valores, descritas no arquivo **.env.example**;
-- Rodar o comando `python src/main.py`.
-
 # Coletando usando Docker
 
 Por exemplo, para coletar o mês de novembro de 2020, basta executar os seguintes comandos:
@@ -32,6 +18,51 @@ Por exemplo, para coletar o mês de novembro de 2020, basta executar os seguinte
 $ sudo docker build -t mppe .
 sudo docker run -e MONTH=01 -e YEAR=2020 -e GIT_COMMIT=$(git rev-parse HEAD) -e OUTPUT_FOLDER='/output' mppe
 ```
+
+# Coleta sem utilização do Docker:
+
+**Obs:** Antes de mais nada, deve-se instalar as dependências do programa, executando o comando:
+
+```sh
+pip install -r requirements.txt
+```
+
+> ## 1. Através da CLI
+
+Por exemplo, para coletar o mês de fevereiro de 2022, os seguintes comandos podem ser executados
+
+- ```sh
+  python src/main.py --YEAR=2022 --MONTH=02 --GIT_COMMIT=$(git rev-parse HEAD) --OUTPUT_FOLDER=/output
+  ```
+- ```sh
+  python src/main.py --YEAR 2022 --MONTH 02 --GIT_COMMIT $(git rev-parse HEAD) --OUTPUT_FOLDER /output
+  ```
+- ```sh
+  python src/main.py -y 2022 -m 02 -gc $(git rev-parse HEAD) -of /output
+  ```
+  Obs: O comando abaixo não funciona no sistema operacional Windows
+- ```sh
+  YEAR=2022 MONTH=02 GIT_COMMIT=$(git rev-list -1 HEAD) python3 src/main.py
+  ```
+
+> ## 2. Criando arquivo **.env**
+
+Por exemplo, para coletar o mês de fevereiro de 2022:
+
+- Criar um arquivo **.env** na raíz do projeto, com as variáveis de ambiente descritas no arquivo **.env.example**, dessa forma:
+
+  ```
+  YEAR=2022
+  MONTH=02
+  GIT_COMMIT=$(git rev-list -1 HEAD)
+  OUTPUT_FOLDER=/output
+  ```
+
+  Com o arquivo **.env** criado, executar o comando:
+
+  ```sh
+  python src/main.py
+  ```
 
 # Dicionário de dados
 
