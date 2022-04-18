@@ -11,29 +11,46 @@ from parser import parse
 import crawler
 import metadado
 import data
+import argparse
 
 load_dotenv()
 
+arg_parser = argparse.ArgumentParser(description="Coletor de dados do MPPE")
+arg_parser.add_argument("--YEAR","-y",type=str, help="Ano de coleta",required=False)
+arg_parser.add_argument("--MONTH","-m",type=str, help="Mês de coleta",required=False)
+arg_parser.add_argument("--GIT_COMMIT","-gc",type=str,required=False)
+arg_parser.add_argument("--OUTPUT_FOLDER","-of",type=str,required=False)
+args = arg_parser.parse_args()
+
 if "YEAR" in os.environ:
     year = os.environ["YEAR"]
+elif args.YEAR != None:
+    year = args.YEAR
 else:
     sys.stderr.write("Invalid arguments, missing parameter: 'YEAR'.\n")
     os._exit(1)
 
 if "MONTH" in os.environ:
     month = os.environ["MONTH"]
-    month = month.zfill(2)
+elif args.MONTH != None:
+    month = args.MONTH
 else:
     sys.stderr.write("Invalid arguments, missing parameter: 'MONTH'.\n")
-    os._exit(1)
+    os._exit(1)  
+    
+month = month.zfill(2)
 
 if "OUTPUT_FOLDER" in os.environ:
     output_path = os.environ["OUTPUT_FOLDER"]
+elif args.OUTPUT_FOLDER != None:
+    output_path = args.OUTPUT_FOLDER
 else:
     output_path = "/output"
 
 if "GIT_COMMIT" in os.environ:
     crawler_version = os.environ["GIT_COMMIT"]
+elif args.GIT_COMMIT != None:
+    crawler_version = args.GIT_COMMIT
 else:
     crawler_version = "unspecified"
 
