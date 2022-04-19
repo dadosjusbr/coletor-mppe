@@ -21,33 +21,45 @@ sudo docker run -e MONTH=01 -e YEAR=2020 -e GIT_COMMIT=$(git rev-parse HEAD) -e 
 
 # Coleta sem utilização do Docker:
 
-**Obs:** Antes de mais nada, deve-se instalar as dependências do programa, executando o comando:
+Antes de mais nada, deve-se instalar as dependências do programa, executando o comando:
 
 ```sh
 pip install -r requirements.txt
 ```
 
-> ## 1. Através da CLI
+Como exemplo, serão descritos os passos para realizar a coleta do mês de fevereiro de 2022.
 
-Por exemplo, para coletar o mês de fevereiro de 2022, os seguintes comandos podem ser executados
+> ## Através da CLI
 
-- ```sh
-  python src/main.py --YEAR=2022 --MONTH=02 --GIT_COMMIT=$(git rev-parse HEAD) --OUTPUT_FOLDER=/output
-  ```
-- ```sh
-  python src/main.py --YEAR 2022 --MONTH 02 --GIT_COMMIT $(git rev-parse HEAD) --OUTPUT_FOLDER /output
-  ```
-- ```sh
-  python src/main.py -y 2022 -m 02 -gc $(git rev-parse HEAD) -of /output
-  ```
-  Obs: O comando abaixo não funciona no sistema operacional Windows
-- ```sh
-  YEAR=2022 MONTH=02 GIT_COMMIT=$(git rev-list -1 HEAD) python3 src/main.py
-  ```
+- ### **Windows**
+
+1. Definir variáveis de ambiente:
+
+```sh
+setx YEAR 2022
+```
+
+```sh
+setx MONTH 02
+```
+
+```sh
+setx GIT_COMMIT '$(git rev-list -1 HEAD)'
+```
+
+2. Rodar o programa:
+
+```sh
+python src/main.py
+```
+
+- ### **Linux**
+
+```sh
+YEAR=2022 MONTH=02 GIT_COMMIT=$(git rev-list -1 HEAD) python3 src/main.py
+```
 
 > ## 2. Criando arquivo **.env**
-
-Por exemplo, para coletar o mês de fevereiro de 2022:
 
 - Criar um arquivo **.env** na raíz do projeto, com as variáveis de ambiente descritas no arquivo **.env.example**, dessa forma:
 
@@ -101,3 +113,7 @@ As planilhas referentes á remunerações possuem as seguintes colunas:
 - Nomeclatura das colunas referentes á verbas indenizatórias é pouco descritiva, Exemplo: 0201-DIF ENTRANC, 0416-PENS AL ATR.
 - Permutação da localização das colunas Indenizações e Outras Remunerações Retroativas/Temporárias, entre 2020 e 2019/2018 sendo necessário abordagem especializada.
 - Inexistência de dados referente á verbas indenizatórias anteriores á setembro de 2019.
+
+```
+
+```
