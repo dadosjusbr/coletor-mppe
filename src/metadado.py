@@ -20,10 +20,10 @@ def captura(month, year):
     metadado.receita_base = Coleta.Metadados.OpcoesDetalhamento.DETALHADO
     metadado.outras_receitas = Coleta.Metadados.OpcoesDetalhamento.DETALHADO
     # Meses onde aconteceu uma mudança nos formatos das planilhas:
-    if int(year) == 2019 and int(month) in [7, 12]:
+    if (int(year) == 2019 and int(month) in [7, 12]) or (int(year) == 2022 and int(month) == 2):
         metadado.formato_consistente = False
     # Não tem planilhas detalhando, apenas o total:
-    if int(year) == 2018 or (int(year) == 2019 and int(month) < 7):
+    if int(year) == 2018 or (int(year) == 2019 and int(month) < 7) or (int(year) == 2022 and int(month) == 2):
         metadado.despesas = Coleta.Metadados.OpcoesDetalhamento.SUMARIZADO
 
     return metadado

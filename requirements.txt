@@ -7,3 +7,4 @@ odfpy>=1.4.1
 requests==2.25.1
 openpyxl==3.0.9
 lxml==4.6.3
+python-dotenv==0.20.0

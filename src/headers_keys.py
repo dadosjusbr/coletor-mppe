@@ -1,6 +1,7 @@
 CONTRACHEQUE_ATE_AGOSTO_2019 = "contracheque_2018_06-2019"
 CONTRACHEQUE_DEPOIS_DE_AGOSTO_2019 = "contracheque_07-2019_2021"
 INDENIZACOES = "indenizações"
+INDENIZACOES_02_DE_2022 = "indenizações_02_de_2022"
 INDENIZACOES_07_A_11_2019 = "divergentes"
 
 HEADERS = {
@@ -113,7 +114,13 @@ HEADERS = {
         "559 PAE TRIB ATR": 47,
         "563 VAN.EXER.ATU": 48,
         "564 VAN.EXER.ANT": 49,
-    }
+    },
+    
+    INDENIZACOES_02_DE_2022: {
+        "VALOR BRUTO": 7,
+        "CONTRIBUIÇÕES PREVIDENCIÁRIAS": 8,
+        "IMPOSTO DE RENDA": 9,
+    },
 }
 
 

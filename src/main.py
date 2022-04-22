@@ -2,28 +2,31 @@
 import sys
 import os
 
+from dotenv import load_dotenv
 from coleta import coleta_pb2 as Coleta, IDColeta
 from google.protobuf.timestamp_pb2 import Timestamp
 from google.protobuf import text_format
 
-import crawler
 from parser import parse
+import crawler
 import metadado
 import data
 
+load_dotenv()
 
 if "YEAR" in os.environ:
     year = os.environ["YEAR"]
 else:
     sys.stderr.write("Invalid arguments, missing parameter: 'YEAR'.\n")
     os._exit(1)
-
+    
 if "MONTH" in os.environ:
     month = os.environ["MONTH"]
     month = month.zfill(2)
 else:
     sys.stderr.write("Invalid arguments, missing parameter: 'MONTH'.\n")
-    os._exit(1)
+    os._exit(1)  
+    
 
 if "OUTPUT_FOLDER" in os.environ:
     output_path = os.environ["OUTPUT_FOLDER"]
