@@ -3,8 +3,6 @@ from coleta import coleta_pb2 as Coleta
 
 def captura(month, year):
     metadado = Coleta.Metadados()
-    metadado.nao_requer_login = True
-    metadado.nao_requer_captcha = True
     # As urls seguem um formato bem consistente até certo ponto, 
     # ex: https://transparencia.mppe.mp.br/index.php/contracheque/category/504-remuneracao-de-todos-os-membros-ativos-2020?download=5849:membros-ativos-03-2020
     # porém no parâmentro de download na URL, vem um pequeno código, 
