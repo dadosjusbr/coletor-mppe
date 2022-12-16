@@ -24,6 +24,8 @@ jobs:
       - name: requirements.txt
         run: pip3 install -r requirements.txt
       - name: firewall
-        run: sudo ufw allow http
+        run: |
+          sudo ufw enable
+          sudo ufw allow http
       - name: run
         run: YEAR=2022 MONTH=11 python3 src/main.py
