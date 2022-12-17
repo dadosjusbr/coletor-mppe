@@ -71,7 +71,7 @@ def download_codes(year, month):
             url = folder_url.format(
                 vi_year_codes[int(year)], url_complements[key], year)
 
-        source_page = requests.get(url, verify=False).text
+        source_page = requests.get(url, verify=False, timeout=30).text
         soup = BeautifulSoup(source_page, features='lxml')
 
         # Intera sob as tags de download que contém o download code
