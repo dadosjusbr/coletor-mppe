@@ -24,4 +24,4 @@ jobs:
       - name: requirements.txt
         run: pip3 install -r requirements.txt
       - name: run
-        run: YEAR=2022 MONTH=11 python3 src/main.py
+        run: YEAR=2022 MONTH=10 python3 src/main.py

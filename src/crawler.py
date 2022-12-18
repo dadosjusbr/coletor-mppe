@@ -5,6 +5,7 @@ import requests
 
 import re
 from bs4 import BeautifulSoup
+from requests.adapters import HTTPAdapter, Retry
 
 
 # Url base refente ao  direntório que contém as planilhas: year_code - url_complement - key
@@ -70,11 +71,13 @@ def download_codes(year, month):
         else:
             url = folder_url.format(
                 vi_year_codes[int(year)], url_complements[key], year)
-            
-        requests.adapters.DEFAULT_RETRIES = 5 
-        s = requests.session()
-        s.keep_alive = False # disable keep alive
-        source_page = s.get(url, verify=False, timeout=30).text
+
+        session = requests.Session()
+        retry = Retry(connect=3, backoff_factor=0.5)
+        adapter = HTTPAdapter(max_retries=retry)
+        session.mount('http://', adapter)
+        session.mount('https://', adapter)
+        source_page = session.get(url, verify=False, timeout=30).text
         print('oi')
         soup = BeautifulSoup(source_page, features='lxml')
 
