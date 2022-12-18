@@ -77,7 +77,8 @@ def download_codes(year, month):
         adapter = HTTPAdapter(max_retries=retry)
         session.mount('http://', adapter)
         session.mount('https://', adapter)
-        source_page = session.get(url, verify=False, timeout=30).text
+        proxies={'http':''}
+        source_page = session.get(url, verify=False, timeout=30, proxies=proxies).text
         print('oi')
         soup = BeautifulSoup(source_page, features='lxml')
 
