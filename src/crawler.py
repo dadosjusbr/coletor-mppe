@@ -70,8 +70,11 @@ def download_codes(year, month):
         else:
             url = folder_url.format(
                 vi_year_codes[int(year)], url_complements[key], year)
-
-        source_page = requests.get(url, verify=False, timeout=30).text
+            
+        requests.adapters.DEFAULT_RETRIES = 5 
+        s = requests.session()
+        s.keep_alive = False # disable keep alive
+        source_page = s.get(url, verify=False, timeout=30).text
         print('oi')
         soup = BeautifulSoup(source_page, features='lxml')
 
