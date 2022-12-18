@@ -72,6 +72,7 @@ def download_codes(year, month):
                 vi_year_codes[int(year)], url_complements[key], year)
 
         source_page = requests.get(url, verify=False, timeout=30).text
+        print('oi')
         soup = BeautifulSoup(source_page, features='lxml')
 
         # Intera sob as tags de download que contém o download code
@@ -104,6 +105,7 @@ def download_codes(year, month):
 def download(url, file_path):
     try:
         response = requests.get(url, allow_redirects=True)
+        print('tchau')
         with open(file_path, "wb") as file:
             file.write(response.content)
             file.close()
