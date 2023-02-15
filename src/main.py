@@ -19,22 +19,22 @@ if "YEAR" in os.environ:
 else:
     sys.stderr.write("Invalid arguments, missing parameter: 'YEAR'.\n")
     os._exit(1)
-    
+
 if "MONTH" in os.environ:
     month = os.environ["MONTH"]
     month = month.zfill(2)
 else:
     sys.stderr.write("Invalid arguments, missing parameter: 'MONTH'.\n")
-    os._exit(1)  
-    
+    os._exit(1)
+
 
 if "OUTPUT_FOLDER" in os.environ:
     output_path = os.environ["OUTPUT_FOLDER"]
 else:
     output_path = "/output"
 
-if "GIT_COMMIT" in os.environ:
-    crawler_version = os.environ["GIT_COMMIT"]
+if "CRAWLER_VERSION" in os.environ:
+    crawler_version = os.environ["CRAWLER_VERSION"]
 else:
     crawler_version = "unspecified"
 
