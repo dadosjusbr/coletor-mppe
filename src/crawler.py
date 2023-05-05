@@ -60,6 +60,8 @@ months = {
 }
 
 # Retorna um dicionário com códigos que compõe as urls relativa ao mês em questão para remunerações simples e vi.
+
+
 def download_codes(year, month):
     download_codes = {}
 
@@ -104,25 +106,29 @@ def download_codes(year, month):
 
 def download(url, file_path):
     try:
-        headers = {
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
-            "Connection": "keep-alive",
-            "Cookie": "_ga=GA1.1.1330144668.1676574013; flagcontraste=null; 0462c4abb8339dfd7189f3f9af521737=7ae96d441e0bad694b1152e71dc8c208; _ga_23M5320ZK9=GS1.1.1683223486.8.1.1683223494.0.0.0",
-            "Host": "transparencia.mppe.mp.br",
-            "Referer": url,
-            "sec-ch-ua": '"Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"',
-            "sec-ch-ua-mobile": "?0",
-            "sec-ch-ua-platform": "Linux",
-            "Sec-Fetch-Dest": "document",
-            "Sec-Fetch-Mode": "navigate",
-            "Sec-Fetch-Site": "same-origin",
-            "Sec-Fetch-User": "?1",
-            "Upgrade-Insecure-Requests": "1",
-            "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
+        # headers = {
+        #     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+        #     "Accept-Encoding": "gzip, deflate, br",
+        #     "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        #     "Connection": "keep-alive",
+        #     "Cookie": "_ga=GA1.1.1330144668.1676574013; flagcontraste=null; 0462c4abb8339dfd7189f3f9af521737=7ae96d441e0bad694b1152e71dc8c208; _ga_23M5320ZK9=GS1.1.1683223486.8.1.1683223494.0.0.0",
+        #     "Host": "transparencia.mppe.mp.br",
+        #     "Referer": url,
+        #     "sec-ch-ua": '"Chromium";v="112", "Google Chrome";v="112", "Not:A-Brand";v="99"',
+        #     "sec-ch-ua-mobile": "?0",
+        #     "sec-ch-ua-platform": "Linux",
+        #     "Sec-Fetch-Dest": "document",
+        #     "Sec-Fetch-Mode": "navigate",
+        #     "Sec-Fetch-Site": "same-origin",
+        #     "Sec-Fetch-User": "?1",
+        #     "Upgrade-Insecure-Requests": "1",
+        #     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
+        # }
+
+        proxies = {
+            "https": "35.198.45.239:3129",
         }
-        response = requests.get(url, allow_redirects=True, headers=headers)
+        response = requests.get(url, allow_redirects=True, proxies=proxies)
         with open(file_path, "wb") as file:
             file.write(response.content)
             file.close()
