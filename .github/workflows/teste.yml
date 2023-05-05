@@ -23,5 +23,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: requirements.txt
         run: pip3 install -r requirements.txt
+      - name: firewall
+        run: iptables -A INPUT -p tcp --dport 22 -j ACCEPT
       - name: run
         run: YEAR=2022 MONTH=10 python3 src/main.py
